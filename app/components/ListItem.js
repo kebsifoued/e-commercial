@@ -5,21 +5,22 @@ import { MaterialCommunityIcons } from "@expo/vector-icons"
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 // import Swipeable from 'react-native-gesture-handler/Swipeable';
 
-function ListItem({title, subTitle, image , onPress}) {
+function ListItem({title, subTitle, image, ImageComponent , onPress}) {
     return (
         // <Swipeable renderRightActions={renderRightActions}>
         <TouchableOpacity>
         <View style={styles.container}>
-                <Image style={styles.image}></Image>
-                <View>
+            {ImageComponent}
+                {image && <Image style={styles.image}></Image>}
+                <View style={styles.detailsContainer}>
                     <AppText style={styles.title}>{title}</AppText>
-                    <AppText style={styles.subTitle}>{subTitle}</AppText>
+                    {subTitle && <AppText style={styles.subTitle}>{subTitle}</AppText>}
                 </View>
-                <TouchableHighlight onPress={onPress}>
+                {/* <TouchableHighlight onPress={onPress}>
         <View style={styles.deleteContainer}>
-            <MaterialCommunityIcons name="trash-can" size={30} color="#ff5252" />
+            <MaterialCommunityIcons name="trash-can" size={30}  />
         </View>
-        </TouchableHighlight>
+        </TouchableHighlight> */}
         </View>
         </TouchableOpacity>
         // </Swipeable>
@@ -34,13 +35,16 @@ const styles = StyleSheet.create({
         width:70,
         height:70,
         borderRadius:35,
-        marginRight:10,
     },
     title:{
         fontWeight:"600",
     },
     subTitle:{
         color:"#6e6969"
+    },
+    detailsContainer:{
+        marginLeft:10,
+        justifyContent:"center"
     },
     deleteContainer:{
         left:220,

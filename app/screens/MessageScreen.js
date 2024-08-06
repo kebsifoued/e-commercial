@@ -20,6 +20,7 @@ const initialMessages=[
 
 function MessageScreen(props) {
     const [messages, setMessages]=useState(initialMessages);
+    const [refreshing, setRefreshing] = useState(false)
     const handleDelete= message =>{
         const newMessages=messages.filter(m=>m.id !== message.id)
         setMessages(messages.filter(m=>m.id !== message.id))
@@ -49,6 +50,17 @@ function MessageScreen(props) {
             }
             />
            }
+           refreshing={refreshing}
+           onRefresh={()=>{
+            setMessages([
+                {
+                    id:2,
+                    title:"ffff",
+                    description:"this is",
+                    image:require("../assets/user.jpg")
+                }
+            ])
+           }}
         />
         </Screen>
     );
