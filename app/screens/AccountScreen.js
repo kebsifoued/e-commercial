@@ -24,13 +24,14 @@ menuItem = [
 ]
 function AccountScreen(props) {
     return (
-        <Screen>
+        <Screen style={styles.screen}>
             <View style={styles.container}>
                  <ListItem title='foued' subTitle='software' image={require("../assets/user.jpg")} />
             </View>
             <View style={styles.container}>
                  <FlatList data={menuItem} 
                  keyExtractor={menuItem => menuItem.title} 
+                //  ItemSeparatorComponent={1}
                  renderItem={({item})=> 
                     <ListItem
                     title={item.title}
@@ -41,12 +42,21 @@ function AccountScreen(props) {
                 }
                  />
             </View>
+            <ListItem 
+            title='Log Out'
+            ImageComponent={
+                <Icon name="logout" backgroundColor='#ffe66d' />
+            }
+            />
         </Screen>
     );
 }
 const styles = StyleSheet.create({
     container:{
         marginVertical:20,
+    },
+    screen:{
+        backgroundColor:colors.light,
     }
 })
 
