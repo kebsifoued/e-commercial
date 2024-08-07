@@ -6,6 +6,7 @@ import { Formik } from 'formik';
 import AppFormField from '../components/AppFormField';
 import SubmitButton from '../components/SubmitButton';
 import AppFormPicker from '../components/AppFormPicker';
+import FormImagePicker from '../components/FormImagePicker';
 
 const categories=[
   {label:"Bike", value:1, backgroundColor:'green', icon:"bike"},
@@ -20,7 +21,8 @@ const validationSchema = Yup.object().shape({
       .required('Price is required'),
     description: Yup.string(),
     category: Yup.object()
-      .required().nullable().label("Category")
+      .required().nullable().label("Category"),
+    image: Yup.array().min(1, "Please select at least one image!")
   }); 
 
 function AddItemScreen() {
@@ -32,13 +34,15 @@ function AddItemScreen() {
           title:"",
           price:"",
           description:"",
-          category:null
+          category:null,
+          images:[]
         }}
         onSubmit={(values=>console.log(values))}
         validationSchema={validationSchema}
         >
         {()=>(
         <>
+        <FormImagePicker name='images'/>
         <AppFormField 
         name="title"
         placeholder="title" 
@@ -49,7 +53,7 @@ function AddItemScreen() {
         maxLengh={6}
         placeholder="Price" 
           />
-        <AppFormPicker 
+        <AppFormPicker
         name="category"
         items={categories}
         placeholder="Category" 
