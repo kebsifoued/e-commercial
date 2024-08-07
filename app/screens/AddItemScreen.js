@@ -8,10 +8,10 @@ import SubmitButton from '../components/SubmitButton';
 import AppFormPicker from '../components/AppFormPicker';
 
 const categories=[
-  {label:"Bike", value:1},
-  {label:"Motocross", value:2},
-  {label:"Motocycle", value:3},
-  {label:"Scooter", value:4},
+  {label:"Bike", value:1, backgroundColor:'green', icon:"bike"},
+  {label:"Motocross", value:2, backgroundColor:'blue', icon:"motorbike"},
+  {label:"Motocycle", value:3, backgroundColor:'red', icon:"motorbike-electric"},
+  {label:"Scooter", value:4, backgroundColor:'grey', icon:"scooter"},
 ]
 const validationSchema = Yup.object().shape({
     title: Yup.string()

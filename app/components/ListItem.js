@@ -1,34 +1,28 @@
 import React from 'react';
-import { View, StyleSheet, Image, TouchableOpacity, TouchableHighlight } from 'react-native';
+import { View, StyleSheet, Image, TouchableHighlight } from 'react-native';
 import AppText from './AppText';
 import { MaterialCommunityIcons } from "@expo/vector-icons"
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import colors from '../config/colors';
 // import Swipeable from 'react-native-gesture-handler/Swipeable';
 
-function ListItem({title, subTitle, image, ImageComponent , onPress}) {
+function ListItem({title, subTitle, image, ImageComponent}) {
     return (
-        // <Swipeable renderRightActions={renderRightActions}>
-        <TouchableOpacity>
+        <TouchableHighlight>
         <View style={styles.container}>
             {ImageComponent}
                 {image && <Image style={styles.image} source={image}></Image>}
                 <View style={styles.detailsContainer}>
-                    <AppText style={styles.title}>{title}</AppText>
-                    {subTitle && <AppText style={styles.subTitle}>{subTitle}</AppText>}
+                    <AppText style={styles.title} numberOfLines={1}>{title}</AppText>
+                    {subTitle && <AppText style={styles.subTitle} numberOfLines={2}>{subTitle}</AppText>}
                 </View>
-                {/* <TouchableHighlight onPress={onPress}>
-        <View style={styles.deleteContainer}>
-            <MaterialCommunityIcons name="trash-can" size={30}  />
+                <MaterialCommunityIcons name='chevron-right' size={25} />
         </View>
-        </TouchableHighlight> */}
-        </View>
-        </TouchableOpacity>
-        // </Swipeable>
+        </TouchableHighlight>
     );
 }
 const styles = StyleSheet.create({
     container:{
+        alignItems:"center",
         flexDirection:"row",
         padding:15,
         backgroundColor:colors.white,
@@ -45,15 +39,10 @@ const styles = StyleSheet.create({
         color:"#6e6969"
     },
     detailsContainer:{
+        flex:1,
         marginLeft:10,
         justifyContent:"center"
     },
-    deleteContainer:{
-        left:220,
-        justifyContent:"center",
-        alignItems:"center"
-
-    }
 })
 
 export default ListItem;
