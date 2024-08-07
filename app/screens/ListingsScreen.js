@@ -16,6 +16,12 @@ const listings=[
         title: "motocycle",
         price: 1200,
         image: require('../assets/motocycle.jpg')
+    },
+    {
+        id:3,
+        title: "Kawasaki",
+        price: 4200,
+        image: require('../assets/Kawasaki.jpg')
     }
 ]
 

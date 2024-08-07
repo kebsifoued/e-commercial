@@ -12,7 +12,7 @@ function ListItem({title, subTitle, image, ImageComponent , onPress}) {
         <TouchableOpacity>
         <View style={styles.container}>
             {ImageComponent}
-                {image && <Image style={styles.image}></Image>}
+                {image && <Image style={styles.image} source={image}></Image>}
                 <View style={styles.detailsContainer}>
                     <AppText style={styles.title}>{title}</AppText>
                     {subTitle && <AppText style={styles.subTitle}>{subTitle}</AppText>}
